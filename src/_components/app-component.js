@@ -10,7 +10,10 @@ class App extends Component{
 	constructor(props){
 		super(props)
 		this.state = {
-			login_section : true
+			login_section : true,
+			header:{
+		        text : 'Registration'
+	      	}
 		}
 	}
 	
@@ -30,17 +33,25 @@ class App extends Component{
 
 	switchForm(show){
 		this.setState({
-			login_section : show 
+			login_section : show,
+		})
+		let header = {
+			text: 'Active'
+		}
+
+		this.setState({
+			header,
 		})
 	}
 	render(){
+		
 		return (
 			<div>
 				<div id="login-form">
 					<div>
 						<ul className="form-header">
 						<li><label htmlFor="login" className={this.state.login_section ? 'active' : ''} onClick={this.switchForm.bind(this, true)}> LOGIN</label></li>
-						<li><label htmlFor="signup" className={!this.state.login_section ? 'active' : ''} onClick={this.switchForm.bind(this, false)}> REGISTER</label></li>
+						<li><label htmlFor="signup" className={!this.state.login_section ? 'active' : ''} onClick={this.switchForm.bind(this, false)}> {this.state.header.text}</label></li>
 						</ul>
 					</div>
 					<div className="section-out">
